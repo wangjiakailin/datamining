@@ -1,0 +1,30 @@
+import redis
+client =  redis.StrictRedis(host='localhost', port=6379)
+print client.ping()
+
+def loadFile(inputFile):
+    file_object = open(inputFile.encode('gbk'))
+    try:
+         all_the_text = file_object.read()
+    finally:
+         file_object.close( )
+    #print(str(all_the_text))
+    return all_the_text
+
+urlList   = loadFile("urlList/url_previous.txt").split("\n")
+for filename in urlList:
+    client.set(filename, True)
+    #print filename
+
+res1 = client.get('http://guba.eastmoney.com/news,600123,206887877.html')
+res2 = client.get('xyz')
+
+if(res1):
+    print "res1 match"
+else:
+    print "res1 mismatch"
+
+if(res2):
+    print "res2 match"
+else:
+    print "res2 mismatch"

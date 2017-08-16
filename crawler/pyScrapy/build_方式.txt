@@ -1,8 +1,0 @@
-Debug As-> Debug Configuration
-
-
-Q：为什么进不去parse2
-A：需要更改name 和allowed_domains
-    name = "eastmoney"
-    allowed_domains = ["eastmoney.com"]
-

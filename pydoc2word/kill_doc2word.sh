@@ -1,1 +1,0 @@
-ps -ef |grep doc2word |grep -v color | awk '{print $2}' |xargs kill
